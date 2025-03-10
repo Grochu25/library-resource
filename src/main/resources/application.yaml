@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: library
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/library
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+library:
+  presence:
+    elementsOnPage: 25
+
+#server:
+#  ssl:
+#    key-store-type: PKCS12
+#    key-store: classpath:library_cert.p12
+#    key-store-password: secret
+#    key-alias: library_cert
+#    enabled: true
