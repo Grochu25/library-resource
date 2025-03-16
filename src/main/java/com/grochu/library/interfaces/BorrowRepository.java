@@ -1,6 +1,7 @@
 package com.grochu.library.interfaces;
 
 import com.grochu.library.DAL.Borrow;
+import com.grochu.library.DAL.Copy;
 import com.grochu.library.DAL.User;
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,4 +12,5 @@ public interface BorrowRepository extends CrudRepository<Borrow, Long>
     List<Borrow> findBorrowsByUntilIsNullAndUser(User user);
     List<Borrow> findBorrowsByUntilIsNotNullAndUser(User user);
     List<Borrow> findBorrowsByUser(User user);
+    Borrow findBorrowByCopyAndUntilNull(Copy copy);
 }

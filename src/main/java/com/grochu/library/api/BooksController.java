@@ -6,17 +6,11 @@ import com.grochu.library.interfaces.CopyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import com.grochu.library.DAL.Book;
 import com.grochu.library.interfaces.BookRepository;
 
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -29,23 +23,39 @@ public class BooksController
 	private final PresenceProps presenceProps;
 
 	@GetMapping(params = "!page")
-	public List<Book> getAllBooks()
+	public List<Book> getAllBooksPagable(@RequestParam(value="search", required = false) String searchPhrase)
 	{
 		PageRequest pageRequest = PageRequest.of(0, presenceProps.getElementsOnPage());
-		return bookRepo.findAll(pageRequest);
+		if(searchPhrase == null)
+			return bookRepo.findAllByOrderByTitleAsc(pageRequest);
+		else
+			return bookRepo.findByTitleContainingOrderByTitleAsc(searchPhrase, pageRequest);
 	}
 
 	@GetMapping(params = "page")
-	public List<Book> getBooksPage(@RequestParam("page") int page)
+	public List<Book> getAllBooksPagable(@RequestParam("page") int page,
+										 @RequestParam(value="search", required = false) String searchPhrase)
 	{
-		PageRequest pageRequest = PageRequest.of(page, presenceProps.getElementsOnPage());
-		return bookRepo.findAll(pageRequest);
+		PageRequest pageRequest = PageRequest.of(page-1, presenceProps.getElementsOnPage());
+		if(searchPhrase == null)
+			return bookRepo.findAllByOrderByTitleAsc(pageRequest);
+		else
+			return bookRepo.findByTitleContainingOrderByTitleAsc(searchPhrase, pageRequest);
+	}
+
+	@GetMapping("/all")
+	public Iterable<Book> getAllBooks()
+	{
+		return bookRepo.findAll();
 	}
 
 	@GetMapping("/number")
-	public int getBookNumber()
+	public long getBookNumber(@RequestParam(value = "search", required = false) String searchPhrase)
 	{
-		return bookRepo.countAll();
+		if(searchPhrase == null)
+			return bookRepo.count();
+		else
+			return bookRepo.countByTitleContainingOrderByTitleAsc(searchPhrase);
 	}
 
 	@GetMapping("/{id}")

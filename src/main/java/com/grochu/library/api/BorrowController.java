@@ -6,6 +6,7 @@ import com.grochu.library.DAL.Copy;
 import com.grochu.library.DAL.User;
 import com.grochu.library.interfaces.BookRepository;
 import com.grochu.library.interfaces.BorrowRepository;
+import com.grochu.library.interfaces.CopyRepository;
 import com.grochu.library.interfaces.UserRepository;
 import jakarta.persistence.OneToOne;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class BorrowController
 {
     private final BorrowRepository borrowRepository;
     private final UserRepository userRepository;
+    private final CopyRepository copyRepository;
 
     @GetMapping(path="/user/{user_id}/current")
     public ResponseEntity<List<Borrow>> getBorrowedByUser(@PathVariable("user_id") long user_id)
@@ -49,6 +51,15 @@ public class BorrowController
         if(user == null)
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(borrowRepository.findBorrowsByUntilIsNotNullAndUser(user), HttpStatus.OK);
+    }
+
+    @GetMapping(path="/copy/{copy_id}")
+    public ResponseEntity<Borrow> getCurrentCopyBorrow(@PathVariable("copy_id") long copyId)
+    {
+        Copy copy = copyRepository.findById(copyId).orElse(null);
+        if(copy == null)
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(borrowRepository.findBorrowByCopyAndUntilNull(copy), HttpStatus.OK);
     }
 
     @PostMapping(consumes="application/json")

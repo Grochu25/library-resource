@@ -10,5 +10,7 @@ import java.util.List;
 public interface AuthorRepository extends CrudRepository<Author, Long>
 {
     Author getAuthorsById(long id);
-    List<Author> findAll(Pageable pageable);
+    List<Author> findAllByOrderByNameAsc(Pageable pageable);
+    List<Author> findByNameContainingOrderByNameAsc(String name, Pageable pageable);
+    long countByNameContainingOrderByNameAsc(String name);
 }
