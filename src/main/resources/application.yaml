@@ -6,10 +6,10 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:9000/oauth2/jwks
+          jwk-set-uri: http://${AUTH_HOSTNAME}:${AUTH_PORT}/oauth2/jwks
 
   datasource:
-    url: jdbc:mysql://localhost:3306/library_data
+    url: jdbc:mysql://${MYSQL_HOSTNAME}:${MYSQL_PORT}/library_data
     username: admin
     password: secret
     driver-class-name: com.mysql.cj.jdbc.Driver
