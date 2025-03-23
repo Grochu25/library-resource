@@ -45,8 +45,11 @@ public class SecurityConfig
                 .authorizeHttpRequests(auth -> auth
                         //.requestMatchers(PathRequest.toH2Console()).permitAll()
                         .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/api/books/**")).hasRole("USER")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/api/books")).hasRole("USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/api/authors/**")).hasRole("USER")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/api/authors")).hasRole("USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/api/copies/**/available/number")).hasRole("USER")
+                        .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/api/users/self/**")).hasRole("USER")
                         .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/api/users/**")).hasRole("ADMIN")
                         .anyRequest().hasRole("ADMIN")
                 )
