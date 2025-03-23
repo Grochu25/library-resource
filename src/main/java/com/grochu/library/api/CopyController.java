@@ -1,8 +1,8 @@
 package com.grochu.library.api;
 
-import com.grochu.library.DAL.Book;
-import com.grochu.library.DAL.Borrow;
-import com.grochu.library.DAL.Copy;
+import com.grochu.library.Domain.Book;
+import com.grochu.library.Domain.Borrow;
+import com.grochu.library.Domain.Copy;
 import com.grochu.library.interfaces.BookRepository;
 import com.grochu.library.interfaces.BorrowRepository;
 import com.grochu.library.interfaces.CopyRepository;

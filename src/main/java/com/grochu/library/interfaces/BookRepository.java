@@ -1,11 +1,11 @@
 package com.grochu.library.interfaces;
 
-import com.grochu.library.DAL.Author;
+import com.grochu.library.Domain.Author;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.NativeQuery;
 import org.springframework.data.repository.CrudRepository;
 
-import com.grochu.library.DAL.Book;
+import com.grochu.library.Domain.Book;
 
 import java.util.List;
 

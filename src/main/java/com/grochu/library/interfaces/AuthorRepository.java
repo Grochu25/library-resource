@@ -3,7 +3,7 @@ package com.grochu.library.interfaces;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
-import com.grochu.library.DAL.Author;
+import com.grochu.library.Domain.Author;
 
 import java.util.List;
 

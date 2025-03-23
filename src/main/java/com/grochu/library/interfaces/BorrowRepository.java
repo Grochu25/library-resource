@@ -1,8 +1,8 @@
 package com.grochu.library.interfaces;
 
-import com.grochu.library.DAL.Borrow;
-import com.grochu.library.DAL.Copy;
-import com.grochu.library.DAL.User;
+import com.grochu.library.Domain.Borrow;
+import com.grochu.library.Domain.Copy;
+import com.grochu.library.Domain.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

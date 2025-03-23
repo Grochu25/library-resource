@@ -1,6 +1,6 @@
 package com.grochu.library.api;
 
-import com.grochu.library.DAL.Copy;
+import com.grochu.library.Domain.Copy;
 import com.grochu.library.PresenceProps;
 import com.grochu.library.interfaces.CopyRepository;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.grochu.library.DAL.Book;
+import com.grochu.library.Domain.Book;
 import com.grochu.library.interfaces.BookRepository;
 
 import java.util.List;

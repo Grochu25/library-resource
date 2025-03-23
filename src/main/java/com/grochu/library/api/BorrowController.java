@@ -1,20 +1,16 @@
 package com.grochu.library.api;
 
-import com.grochu.library.DAL.Book;
-import com.grochu.library.DAL.Borrow;
-import com.grochu.library.DAL.Copy;
-import com.grochu.library.DAL.User;
-import com.grochu.library.interfaces.BookRepository;
+import com.grochu.library.Domain.Borrow;
+import com.grochu.library.Domain.Copy;
+import com.grochu.library.Domain.User;
 import com.grochu.library.interfaces.BorrowRepository;
 import com.grochu.library.interfaces.CopyRepository;
 import com.grochu.library.interfaces.UserRepository;
-import jakarta.persistence.OneToOne;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController

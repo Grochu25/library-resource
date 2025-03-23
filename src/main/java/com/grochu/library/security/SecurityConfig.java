@@ -1,5 +1,6 @@
 package com.grochu.library.security;
 
+import com.grochu.library.EnvironmentalConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -30,7 +31,9 @@ import java.util.stream.Collectors;
 @EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig
+{
+    private final EnvironmentalConfig envConf;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -64,7 +67,9 @@ public class SecurityConfig {
         CorsConfiguration conf = new CorsConfiguration();
         conf.setAllowedHeaders(List.of("Content-Type", "Authorization"));
         conf.setAllowedMethods(List.of("GET", "POST", "UPDATE", "DELETE"));
-        conf.setAllowedOrigins(List.of("http://localhost:5173","http://localhost:8000"));
+        conf.setAllowedOrigins(List.of(
+                "http://"+envConf.getClientHostname()+":"+envConf.getClientPort(),
+                "http://"+envConf.getAdminHostname()+":"+envConf.getAdminPort()));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", conf);
         return source;

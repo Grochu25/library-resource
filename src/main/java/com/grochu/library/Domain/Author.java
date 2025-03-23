@@ -1,4 +1,4 @@
-package com.grochu.library.DAL;
+package com.grochu.library.Domain;
 
 import jakarta.persistence.*;
 import lombok.Data;

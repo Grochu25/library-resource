@@ -1,13 +1,12 @@
 package com.grochu.library.interfaces;
 
-import com.grochu.library.DAL.Book;
+import com.grochu.library.Domain.Book;
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.SQLUpdate;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.NativeQuery;
 import org.springframework.data.repository.CrudRepository;
 
-import com.grochu.library.DAL.Copy;
+import com.grochu.library.Domain.Copy;
 
 import java.util.List;
 

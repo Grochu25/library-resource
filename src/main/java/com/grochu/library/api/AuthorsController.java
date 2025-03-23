@@ -1,7 +1,7 @@
 package com.grochu.library.api;
 
-import com.grochu.library.DAL.Author;
-import com.grochu.library.DAL.Book;
+import com.grochu.library.Domain.Author;
+import com.grochu.library.Domain.Book;
 import com.grochu.library.PresenceProps;
 import com.grochu.library.interfaces.AuthorRepository;
 import com.grochu.library.interfaces.BookRepository;

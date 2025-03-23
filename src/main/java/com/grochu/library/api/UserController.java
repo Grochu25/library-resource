@@ -1,7 +1,7 @@
 package com.grochu.library.api;
 
-import com.grochu.library.DAL.Borrow;
-import com.grochu.library.DAL.User;
+import com.grochu.library.Domain.Borrow;
+import com.grochu.library.Domain.User;
 import com.grochu.library.PresenceProps;
 import com.grochu.library.interfaces.BorrowRepository;
 import com.grochu.library.interfaces.UserRepository;

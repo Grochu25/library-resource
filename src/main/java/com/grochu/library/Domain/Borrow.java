@@ -1,7 +1,6 @@
-package com.grochu.library.DAL;
+package com.grochu.library.Domain;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import jakarta.persistence.*;
 import lombok.Data;
