@@ -10,11 +10,13 @@ Other parts of application:
 
 The server only allows client app and admin app to get resources. Client can look through books and authros. Admin can manipulate the data in the database through their application.
 
-## Database
+## Database and Auth server
 To run this application, an external **MySQL server** is required with *library_data* database (Structure and example data are stored in library_data.sql).
 It contains tables for users, authors, books, copies of books and borrowed books by users.
 
-The server address and port are specified in environmental variables.
+To run it also requires working auth server.
+
+Both servers addresses and ports are specified in environmental variables.
 
 Users can log in to the client application, and the admin can log in to the admin application.
 
