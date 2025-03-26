@@ -33,4 +33,4 @@ To allow changing the addresses and ports of all servers that make up the librar
 
 ## Docker
 To dockerize this application segment there is ready to use **Dockerfile** inside project root folder.
-To use whole application with all segments there is a **docker-compose.yml**, that pulls all necessary images and sets up the network between them
+To use whole application with all segments there is a **docker-compose.yml**, that pulls all necessary images and sets up the network between them. Only thing user have to do to use compose file without changes is to add alias AUTH_HOSTNAME for localhost.
